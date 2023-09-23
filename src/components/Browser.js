@@ -7,19 +7,18 @@ import MovieTitle from "./MovieTitle";
 const Browser = () => {
   useMovieDataFetch();
   const movieDetails = useSelector((store) => store.movie);
+  const movieDetailsFirst = movieDetails.nowPlayingMovies[3];
+
 
   return (
     <>
       <Header />
-      <div className="">
-        <MovieTitle />
-        <div>
+        <MovieTitle title={movieDetailsFirst?.title} desc={movieDetailsFirst?.overview}  />
           {movieDetails.nowPlayingMovies &&
             movieDetails.nowPlayingMovies[3] && (
-              <MovieBackVideo id={movieDetails.nowPlayingMovies[3].id} />
+              <MovieBackVideo id={movieDetails?.nowPlayingMovies[3]?.id} />
             )}
-        </div>
-      </div>
+
     </>
   );
 };

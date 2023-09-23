@@ -11,7 +11,6 @@ const Header = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
 
-
   const dispatch = useDispatch();
 
   const handleUser = async () => {
@@ -24,7 +23,6 @@ const Header = () => {
     }
   };
 
-  
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -38,7 +36,6 @@ const Header = () => {
       }
     });
 
-    
     return () => {
       unsubscribe();
     };
@@ -47,7 +44,9 @@ const Header = () => {
 
   return (
     <>
-      <div className={`flex items-center justify-between px-4 bg-transparent  w-full absolute  z-10  `}>
+      <div
+        className={`flex items-center justify-between px-4 bg-transparent  w-full absolute  z-10  `}
+      >
         <React.Fragment>
           <img
             className="relative w-[200px] h-auto z-10"
@@ -69,9 +68,11 @@ const Header = () => {
               />
             </>
           )}
-          <button onClick={handleUser} className="text-white">
-            {user === null ? "Sign In" : "Sign Out"}
-          </button>
+          {user && (
+            <button onClick={handleUser} className="text-white">
+              "Sign Out"
+            </button>
+          )}
         </div>
       </div>
     </>
