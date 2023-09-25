@@ -3,6 +3,10 @@ import useMovieDataFetch from "../hooks/useMovieDataFetch";
 import { useSelector } from "react-redux";
 import MovieBackVideo from "./MovieBackVideo";
 import MovieTitle from "./MovieTitle";
+import MoviesTemplate from "./MoviesTemplate";
+import { POPULAR_MOVIE } from "../utils/constant";
+import { TOP_RATED } from "../utils/constant";
+import { UPCOMING_MOVIES } from "../utils/constant";
 
 const Browser = () => {
   useMovieDataFetch();
@@ -18,6 +22,10 @@ const Browser = () => {
             movieDetails.nowPlayingMovies[3] && (
               <MovieBackVideo id={movieDetails?.nowPlayingMovies[3]?.id} />
             )}
+          
+            <MoviesTemplate title={'Upcoming Movies'} url={UPCOMING_MOVIES}/>
+           <MoviesTemplate title={'Popular Now'} url={POPULAR_MOVIE} />
+           <MoviesTemplate title={'Trending Now'} url={TOP_RATED} />
 
     </>
   );

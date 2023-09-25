@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNowPlaingMovies } from "../utils/movieSlice";
 import { API_OPTION } from "../utils/constant";
 
 const useMovieDataFetch = () => {
+
+  const nowPlayingMovies = useSelector(store=> store.addNowPlaingMovies);
 
 
     const dispatch = useDispatch();
@@ -16,7 +18,8 @@ const useMovieDataFetch = () => {
     
      
       useEffect(()=>{
-        getNowPlayingMovie();
+        // We are using the memorizing here for reduce the api calls
+        !nowPlayingMovies && getNowPlayingMovie();
          // eslint-disable-next-line react-hooks/exhaustive-deps
       },[])
 

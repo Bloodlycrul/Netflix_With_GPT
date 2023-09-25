@@ -3,7 +3,7 @@ import React from "react";
 const MovieTitle = ({title , desc}) => {
 
   return (
-    <div className="absolute w-full h-screen aspect-video bg-gradient-to-r from-black/50 text-white py-[420px]">
+    <div className="absolute w-full h-full aspect-video bg-gradient-to-r from-black/50 text-white py-[350px] z-10">
       <div className="w-2/4 px-[100px]">
         <h1 className="text-[70px] my-5">{title}</h1>
         <p className="text-[20px]">{desc}</p>

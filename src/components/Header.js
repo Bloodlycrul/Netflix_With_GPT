@@ -45,7 +45,7 @@ const Header = () => {
   return (
     <>
       <div
-        className={`flex items-center justify-between px-4 bg-transparent  w-full absolute  z-10  `}
+        className={`flex items-center justify-between px-4 bg-transparent  w-full absolute  z-30  `}
       >
         <React.Fragment>
           <img
