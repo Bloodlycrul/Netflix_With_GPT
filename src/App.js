@@ -5,8 +5,9 @@ import "./index.css";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import "./utils/firebase";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Browser from "./components/Browser";
+import MainMovieContainer from "./components/MainMovieContainer";
 
 
 // Your component code here
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     path: "/browser",
     element: <Browser />,
   },
+  {
+    path : "/movie/:id",
+    element : <MainMovieContainer />
+  }
 ]);
 
 function App() {
@@ -26,7 +31,7 @@ function App() {
     <Provider store={appStore}>
       <RouterProvider router={router}>
         <div className="App">
-          <Login />
+          <Outlet />
         </div>
       </RouterProvider>
     </Provider>

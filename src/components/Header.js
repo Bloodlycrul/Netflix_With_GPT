@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../utils/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { addUser } from "../utils/userSlice";
 import { LOGO, USERPROFILE } from "../utils/constant";
@@ -26,10 +26,14 @@ const Header = () => {
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
+      const currentPath = window.location.pathname;
+      const isMovieRoute = /^\/movie\//.test(currentPath);
       if (user) {
         const { email, uid, displayName } = user;
         dispatch(addUser({ uid, email, displayName }));
-        navigate("/browser");
+        if (!isMovieRoute && currentPath !== "/browser") {
+          navigate("/browser");
+        }
       } else {
         dispatch(removeUser());
         navigate("/");
@@ -48,11 +52,13 @@ const Header = () => {
         className={`flex items-center justify-between px-4 bg-transparent  w-full absolute  z-30  `}
       >
         <React.Fragment>
+        <Link to='/browser'>
           <img
             className="relative w-[200px] h-auto z-10"
             src={LOGO}
             alt="logo"
           />
+          </Link>
         </React.Fragment>
 
         <div className="flex items-center text-white">

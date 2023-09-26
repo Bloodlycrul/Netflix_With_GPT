@@ -13,20 +13,20 @@ const Browser = () => {
   const movieDetails = useSelector((store) => store.movie);
   const movieDetailsFirst = movieDetails.nowPlayingMovies[3];
 
-
   return (
     <>
       <Header />
-        <MovieTitle title={movieDetailsFirst?.title} desc={movieDetailsFirst?.overview}  />
-          {movieDetails.nowPlayingMovies &&
-            movieDetails.nowPlayingMovies[3] && (
-              <MovieBackVideo id={movieDetails?.nowPlayingMovies[3]?.id} />
-            )}
-          
-            <MoviesTemplate title={'Upcoming Movies'} url={UPCOMING_MOVIES}/>
-           <MoviesTemplate title={'Popular Now'} url={POPULAR_MOVIE} />
-           <MoviesTemplate title={'Trending Now'} url={TOP_RATED} />
+      <MovieTitle
+        title={movieDetailsFirst?.title}
+        desc={movieDetailsFirst?.overview}
+      />
+      {movieDetails.nowPlayingMovies && movieDetails.nowPlayingMovies[3] && (
+        <MovieBackVideo id={movieDetails?.nowPlayingMovies[3]?.id} />
+      )}
 
+      <MoviesTemplate title={"Upcoming Movies"} url={UPCOMING_MOVIES} />
+      <MoviesTemplate title={"Popular Now"} url={POPULAR_MOVIE} />
+      <MoviesTemplate title={"Trending Now"} url={TOP_RATED} />
     </>
   );
 };
