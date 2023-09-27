@@ -24,9 +24,11 @@ const Browser = () => {
         <MovieBackVideo id={movieDetails?.nowPlayingMovies[3]?.id} />
       )}
 
+      <MoviesTemplate title={"Now Playing"} url={process.env.REACT_APP_NOW_PLAYING} />
       <MoviesTemplate title={"Upcoming Movies"} url={UPCOMING_MOVIES} />
       <MoviesTemplate title={"Popular Now"} url={POPULAR_MOVIE} />
       <MoviesTemplate title={"Trending Now"} url={TOP_RATED} />
+
     </>
   );
 };
